@@ -32,7 +32,7 @@
  *	Donations to support MSS Code Factory can be made at
  *	https://www.paypal.com/paypalme2/MarkSobkow
  *	
- *	Please contact Mark Stephen Sobkow at msobkow@sasktel.net for commercial licensing.
+ *	Please contact Mark Stephen Sobkow at mark.sobkow@gmail.com for commercial licensing.
  *
  *	Manufactured by MSS Code Factory 2.12
  */
@@ -43,6 +43,7 @@ import java.math.*;
 import java.sql.*;
 import java.util.*;
 import org.msscf.msscf.v2_13.cflib.CFLib.*;
+import org.msscf.msscf.v2_13.cflib.CFLib.xml.*;
 import org.msscf.msscf.v2_13.cfcore.MssCF.*;
 import org.msscf.msscf.v2_13.cfsec.CFSec.*;
 import org.msscf.msscf.v2_13.cfint.CFInt.*;
