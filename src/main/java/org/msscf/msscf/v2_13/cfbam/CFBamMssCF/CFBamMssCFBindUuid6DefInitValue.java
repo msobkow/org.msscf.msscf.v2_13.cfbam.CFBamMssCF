@@ -91,7 +91,7 @@ public class CFBamMssCFBindUuid6DefInitValue
 				"genContext.getGenDef()" );
 		}
 
-		UUID initValue;
+		String initValue;
 		if( genDef instanceof ICFBamUuid6DefObj ) {
 			initValue = ((ICFBamUuid6DefObj)genDef).getOptionalInitValue();
 		}
@@ -127,13 +127,8 @@ public class CFBamMssCFBindUuid6DefInitValue
 		String ret;
 
 		if( genDef instanceof ICFBamUuid6DefObj ) {
-			UUID initValue = ((ICFBamUuid6DefObj)genDef).getOptionalInitValue();
-			if( initValue == null ) {
-				ret = null;
-			}
-			else {
-				ret = initValue.toString();
-			}
+			String initValue = ((ICFBamUuid6DefObj)genDef).getOptionalInitValue();
+			ret = initValue;
 		}
 		else {
 			throw new CFLibUnsupportedClassException( getClass(),

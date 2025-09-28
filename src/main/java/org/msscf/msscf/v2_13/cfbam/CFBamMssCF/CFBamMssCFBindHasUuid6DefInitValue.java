@@ -88,7 +88,7 @@ public class CFBamMssCFBindHasUuid6DefInitValue
 		}
 
 		if( genDef instanceof ICFBamUuid6DefObj ) {
-			UUID initValue = ((ICFBamUuid6DefObj)genDef).getOptionalInitValue();
+			String initValue = ((ICFBamUuid6DefObj)genDef).getOptionalInitValue();
 			if( initValue != null ) {
 				return( "yes" );
 			}
