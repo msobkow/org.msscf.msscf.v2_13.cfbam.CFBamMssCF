@@ -243,6 +243,7 @@ public abstract class CFBamMssCFEngine
 		ICFGenKbDefClassObj defClassTweak = bootstrapDefClass( "Tweak", defClassObject );
 		ICFGenKbDefClassObj defClassTableTweak = bootstrapDefClass( "TableTweak", defClassTweak );
 		ICFGenKbDefClassObj defClassSchemaTweak = bootstrapDefClass( "SchemaTweak", defClassTweak );
+		ICFGenKbDefClassObj defClassIndexTweak = bootstrapDefClass( "IndexTweak", defClassTweak );
 		ICFGenKbDefClassObj defClassURLProtocol = bootstrapDefClass( "URLProtocol", defClassObject );
 		ICFGenKbDefClassObj defClassValue = bootstrapDefClass( "Value", defClassObject );
 		ICFGenKbDefClassObj defClassAtom = bootstrapDefClass( "Atom", defClassValue );
@@ -2508,6 +2509,13 @@ public abstract class CFBamMssCFEngine
 		editBind = null;
 
 		bind = new CFBamMssCFBindHasIndexColNext( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindIndexTweakIndexId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
 		editBind.setRequiredLookupRuleType( ruleTypeBind );
@@ -11139,6 +11147,13 @@ public abstract class CFBamMssCFEngine
 		editIterator.create();
 		editIterator = null;
 
+		iterator = new CFBamMssCFIterateIndexTweaks( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
 		iterator = new CFBamMssCFIterateIndexColRefRelFromCol( this );
 		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
 		editIterator.setRequiredContainerCartridge( ruleCart );
@@ -11995,6 +12010,13 @@ public abstract class CFBamMssCFEngine
 		editRefer = null;
 
 		refer = new CFBamMssCFReferenceIndexColColumn( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexTweakIndexDef( this );
 		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
 		editRefer.setRequiredContainerCartridge( ruleCart );
 		editRefer.setRequiredLookupRuleType( ruleTypeReference );
