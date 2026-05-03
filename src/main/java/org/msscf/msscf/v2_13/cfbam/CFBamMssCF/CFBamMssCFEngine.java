@@ -195,6 +195,8 @@ public abstract class CFBamMssCFEngine
 		ICFGenKbDefClassObj defClassMinorVersion = bootstrapDefClass( "MinorVersion", defClassObject );
 		ICFGenKbDefClassObj defClassParam = bootstrapDefClass( "Param", defClassObject );
 		ICFGenKbDefClassObj defClassRelationCol = bootstrapDefClass( "RelationCol", defClassObject );
+		ICFGenKbDefClassObj defClassRoleDef = bootstrapDefClass( "RoleDef", defClassObject );
+		ICFGenKbDefClassObj defClassSchemaRole = bootstrapDefClass( "SchemaRole", defClassRoleDef );
 		ICFGenKbDefClassObj defClassScope = bootstrapDefClass( "Scope", defClassObject );
 		ICFGenKbDefClassObj defClassSchemaDef = bootstrapDefClass( "SchemaDef", defClassScope );
 		ICFGenKbDefClassObj defClassSchemaRef = bootstrapDefClass( "SchemaRef", defClassScope );
@@ -359,6 +361,2199 @@ public abstract class CFBamMssCFEngine
 		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
 		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 
+		bootstrapAtomBindings();
+		bootstrapBlobColBindings();
+		bootstrapBlobDefBindings();
+		bootstrapBlobTypeBindings();
+		bootstrapBoolColBindings();
+		bootstrapBoolDefBindings();
+		bootstrapBoolTypeBindings();
+		bootstrapChainBindings();
+		bootstrapClearDepBindings();
+		bootstrapClearSubDep1Bindings();
+		bootstrapClearSubDep2Bindings();
+		bootstrapClearSubDep3Bindings();
+		bootstrapClearTopDepBindings();
+		bootstrapClusterBindings();
+		bootstrapDateColBindings();
+		bootstrapDateDefBindings();
+		bootstrapDateTypeBindings();
+		bootstrapDbKeyHash128ColBindings();
+		bootstrapDbKeyHash128DefBindings();
+		bootstrapDbKeyHash128GenBindings();
+		bootstrapDbKeyHash128TypeBindings();
+		bootstrapDbKeyHash160ColBindings();
+		bootstrapDbKeyHash160DefBindings();
+		bootstrapDbKeyHash160GenBindings();
+		bootstrapDbKeyHash160TypeBindings();
+		bootstrapDbKeyHash224ColBindings();
+		bootstrapDbKeyHash224DefBindings();
+		bootstrapDbKeyHash224GenBindings();
+		bootstrapDbKeyHash224TypeBindings();
+		bootstrapDbKeyHash256ColBindings();
+		bootstrapDbKeyHash256DefBindings();
+		bootstrapDbKeyHash256GenBindings();
+		bootstrapDbKeyHash256TypeBindings();
+		bootstrapDbKeyHash384ColBindings();
+		bootstrapDbKeyHash384DefBindings();
+		bootstrapDbKeyHash384GenBindings();
+		bootstrapDbKeyHash384TypeBindings();
+		bootstrapDbKeyHash512ColBindings();
+		bootstrapDbKeyHash512DefBindings();
+		bootstrapDbKeyHash512GenBindings();
+		bootstrapDbKeyHash512TypeBindings();
+		bootstrapDelDepBindings();
+		bootstrapDelSubDep1Bindings();
+		bootstrapDelSubDep2Bindings();
+		bootstrapDelSubDep3Bindings();
+		bootstrapDelTopDepBindings();
+		bootstrapDoubleColBindings();
+		bootstrapDoubleDefBindings();
+		bootstrapDoubleTypeBindings();
+		bootstrapEnumDefBindings();
+		bootstrapEnumTagBindings();
+		bootstrapEnumTypeBindings();
+		bootstrapFloatColBindings();
+		bootstrapFloatDefBindings();
+		bootstrapFloatTypeBindings();
+		bootstrapHostNodeBindings();
+		bootstrapISOCcyBindings();
+		bootstrapISOCtryBindings();
+		bootstrapISOCtryCcyBindings();
+		bootstrapISOCtryLangBindings();
+		bootstrapISOLangBindings();
+		bootstrapISOTZoneBindings();
+		bootstrapId16GenBindings();
+		bootstrapId32GenBindings();
+		bootstrapId64GenBindings();
+		bootstrapIndexBindings();
+		bootstrapIndexColBindings();
+		bootstrapIndexTweakBindings();
+		bootstrapInt16ColBindings();
+		bootstrapInt16DefBindings();
+		bootstrapInt16TypeBindings();
+		bootstrapInt32ColBindings();
+		bootstrapInt32DefBindings();
+		bootstrapInt32TypeBindings();
+		bootstrapInt64ColBindings();
+		bootstrapInt64DefBindings();
+		bootstrapInt64TypeBindings();
+		bootstrapLicenseBindings();
+		bootstrapMajorVersionBindings();
+		bootstrapMimeTypeBindings();
+		bootstrapMinorVersionBindings();
+		bootstrapNmTokenColBindings();
+		bootstrapNmTokenDefBindings();
+		bootstrapNmTokenTypeBindings();
+		bootstrapNmTokensColBindings();
+		bootstrapNmTokensDefBindings();
+		bootstrapNmTokensTypeBindings();
+		bootstrapNumberColBindings();
+		bootstrapNumberDefBindings();
+		bootstrapNumberTypeBindings();
+		bootstrapParamBindings();
+		bootstrapPopDepBindings();
+		bootstrapPopSubDep1Bindings();
+		bootstrapPopSubDep2Bindings();
+		bootstrapPopSubDep3Bindings();
+		bootstrapPopTopDepBindings();
+		bootstrapRelationBindings();
+		bootstrapRelationColBindings();
+		bootstrapRoleDefBindings();
+		bootstrapSchemaDefBindings();
+		bootstrapSchemaRefBindings();
+		bootstrapSchemaRoleBindings();
+		bootstrapSchemaTweakBindings();
+		bootstrapScopeBindings();
+		bootstrapSecAppBindings();
+		bootstrapSecDeviceBindings();
+		bootstrapSecFormBindings();
+		bootstrapSecGroupBindings();
+		bootstrapSecGroupFormBindings();
+		bootstrapSecGrpIncBindings();
+		bootstrapSecGrpMembBindings();
+		bootstrapSecSessionBindings();
+		bootstrapSecUserBindings();
+		bootstrapServerListFuncBindings();
+		bootstrapServerMethodBindings();
+		bootstrapServerObjFuncBindings();
+		bootstrapServerProcBindings();
+		bootstrapServiceBindings();
+		bootstrapServiceTypeBindings();
+		bootstrapStringColBindings();
+		bootstrapStringDefBindings();
+		bootstrapStringTypeBindings();
+		bootstrapSubProjectBindings();
+		bootstrapSysClusterBindings();
+		bootstrapTSecGroupBindings();
+		bootstrapTSecGrpIncBindings();
+		bootstrapTSecGrpMembBindings();
+		bootstrapTZDateColBindings();
+		bootstrapTZDateDefBindings();
+		bootstrapTZDateTypeBindings();
+		bootstrapTZTimeColBindings();
+		bootstrapTZTimeDefBindings();
+		bootstrapTZTimeTypeBindings();
+		bootstrapTZTimestampColBindings();
+		bootstrapTZTimestampDefBindings();
+		bootstrapTZTimestampTypeBindings();
+		bootstrapTableBindings();
+		bootstrapTableColBindings();
+		bootstrapTableTweakBindings();
+		bootstrapTenantBindings();
+		bootstrapTextColBindings();
+		bootstrapTextDefBindings();
+		bootstrapTextTypeBindings();
+		bootstrapTimeColBindings();
+		bootstrapTimeDefBindings();
+		bootstrapTimeTypeBindings();
+		bootstrapTimestampColBindings();
+		bootstrapTimestampDefBindings();
+		bootstrapTimestampTypeBindings();
+		bootstrapTldBindings();
+		bootstrapTokenColBindings();
+		bootstrapTokenDefBindings();
+		bootstrapTokenTypeBindings();
+		bootstrapTopDomainBindings();
+		bootstrapTopProjectBindings();
+		bootstrapTweakBindings();
+		bootstrapUInt16ColBindings();
+		bootstrapUInt16DefBindings();
+		bootstrapUInt16TypeBindings();
+		bootstrapUInt32ColBindings();
+		bootstrapUInt32DefBindings();
+		bootstrapUInt32TypeBindings();
+		bootstrapUInt64ColBindings();
+		bootstrapUInt64DefBindings();
+		bootstrapUInt64TypeBindings();
+		bootstrapURLProtocolBindings();
+		bootstrapUuid6ColBindings();
+		bootstrapUuid6DefBindings();
+		bootstrapUuid6GenBindings();
+		bootstrapUuid6TypeBindings();
+		bootstrapUuidColBindings();
+		bootstrapUuidDefBindings();
+		bootstrapUuidGenBindings();
+		bootstrapUuidTypeBindings();
+		bootstrapValueBindings();
+	}
+
+	public void bootstrapIterators() {
+		ICFGenKbGenIteratorObj iterator = null;
+		ICFGenKbGenIteratorEditObj editIterator = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeIterator = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Iterator");
+
+		iterator = new CFBamMssCFIterateClearSubDep1ClearDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClearSubDep2ClearDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClearTopDepClearDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClusterHostNode( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClusterTenant( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClusterSecApp( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClusterSecGroup( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateClusterSysCluster( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateDelSubDep1DelDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateDelSubDep2DelDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateDelTopDepDelDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateEnumDefTag( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateHostNodeService( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateISOCcyCtry( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateISOCtryCcy( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateISOCtryLang( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateISOLangCtry( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateIndexColumns( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateIndexTweaks( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateIndexColRefRelFromCol( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateIndexColRefRelToCol( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateMajorVersionMinorVer( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateMinorVersionSchemaDef( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIteratePopSubDep1PopDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIteratePopSubDep2PopDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIteratePopTopDepPopDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateRelationColumns( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateRelationPopDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSchemaDefTables( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSchemaDefTypes( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSchemaDefSchemaRefs( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSchemaDefTweaks( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSchemaDefRoles( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecAppForm( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecGroupInclude( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecGroupMember( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecGroupIncByGroup( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecGroupForm( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecUserSecDev( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecUserSecSess( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecUserSecProxy( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecUserSecGrpMemb( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSecUserTSecGrpMemb( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateServerMethodParams( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateServiceTypeDeployed( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateSubProjectMajorVer( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTSecGroupInclude( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTSecGroupMember( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTSecGroupIncByGroup( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableRelation( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableIndex( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableColumns( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableReverseRelations( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableChains( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableDelDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableClearDep( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableDispId16Gen( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableDispId32Gen( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableDispId64Gen( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableServerMethods( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTableTweaks( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTenantTSecGroup( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTenantTld( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTenantSchema( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTldTopDomain( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTopDomainLicense( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTopDomainTopProject( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateTopProjectSubProject( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateValueRefTableCol( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+		iterator = new CFBamMssCFIterateValueRefIndexCol( this );
+		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
+		editIterator.setRequiredContainerCartridge( ruleCart );
+		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
+		editIterator.create();
+		editIterator = null;
+
+	}
+
+	public void bootstrapReferences() {
+		ICFGenKbGenReferenceObj refer = null;
+		ICFGenKbGenReferenceEditObj editRefer = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeReference = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Reference");
+
+		refer = new CFBamMssCFReferenceBlobColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceBlobTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceBoolColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceBoolTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceChainTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceChainTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceChainDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceChainPrevRel( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceChainNextRel( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearDepRelation( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearDepDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearSubDep1ClearTopDep( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearSubDep2ClearSubDep1( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearSubDep3ClearSubDep2( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearTopDepTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearTopDepPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceClearTopDepNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDateColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDateTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash128ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash128GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash128TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash160ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash160GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash160TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash224ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash224GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash224TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash256ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash256GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash256TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash384ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash384GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash384TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash512ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash512GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDbKeyHash512TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelDepRelation( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelDepDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelSubDep1DelTopDep( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelSubDep2DelSubDep1( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelSubDep3DelSubDep2( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelTopDepTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelTopDepPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDelTopDepNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDoubleColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceDoubleTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTagTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTagEnumDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTagDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTagPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTagNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceEnumTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceFloatColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceFloatTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceHostNodeCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceISOCtryCcyCtry( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceISOCtryCcyCcy( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceISOCtryLangCtry( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceISOCtryLangLang( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceId16GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceId32GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceId64GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexIdxTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexColColumn( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceIndexTweakIndexDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt16ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt16TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt32ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt32TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt64ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceInt64TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceLicenseTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceLicenseTopDomain( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceMajorVersionTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceMajorVersionParentSPrj( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceMinorVersionTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceMinorVersionParentMajVer( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNmTokenColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNmTokenTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNmTokensColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNmTokensTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNumberColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceNumberTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamServerMeth( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceParamType( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopDepRelation( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopDepDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopSubDep1ContPopTopDep( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopSubDep2PopSubDep1( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopSubDep3PopSubDep2( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferencePopTopDepContRelation( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationFromTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationRelTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationFromIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationToTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationToIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationNarrowed( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColRelation( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColFromCol( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRelationColToCol( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRoleDefTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRoleDefScopeDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceRoleDefDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaDefMinorVersion( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaDefCTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaRefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaRefRefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaRefPrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaRefNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaRoleSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSchemaTweakSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceScopeTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecAppCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecDeviceSecUser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecFormCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecFormApplication( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGroupCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGroupFormCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGroupFormGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGroupFormApp( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGroupFormForm( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpIncCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpIncGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpIncSubGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpMembCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpMembGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecGrpMembUser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecSessionSecUser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecSessionSecProxy( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSecUserDefDev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServerListFuncRetTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServerMethodDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServerMethodForTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServerObjFuncRetTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServiceCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServiceHost( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceServiceServiceType( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceStringColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceStringTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSubProjectTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSubProjectParentTPrj( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceSysClusterCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGroupTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpIncTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpIncGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpIncSubGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpMembTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpMembGroup( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTSecGrpMembUser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZDateColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZDateTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZTimeColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZTimeTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZTimestampColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTZTimestampTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableLookupIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableAltIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableQualTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTablePrimaryIndex( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableColDataType( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTableTweakTableDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTenantCluster( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTextColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTextTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTimeColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTimeTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTimestampColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTimestampTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTldTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTokenColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTokenTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTopDomainTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTopDomainParentTld( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTopProjectTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTopProjectParentSDom( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTweakTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTweakScopeDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceTweakDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt16ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt16TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt32ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt32TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt64ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUInt64TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuid6ColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuid6GenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuid6TypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuidColTable( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuidGenDispenser( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceUuidTypeSchemaDef( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceValueTenant( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceValueScope( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceValueDefSchema( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceValuePrev( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+		refer = new CFBamMssCFReferenceValueNext( this );
+		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
+		editRefer.setRequiredContainerCartridge( ruleCart );
+		editRefer.setRequiredLookupRuleType( ruleTypeReference );
+		editRefer.create();
+		editRefer = null;
+
+	}
+
+	public void bootstrapAtomBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindAtomDbName( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -373,6 +2568,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBlobColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBlobColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -380,6 +2582,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBlobDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBlobDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -401,6 +2610,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBlobTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBlobTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -408,6 +2624,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBoolColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBoolColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -415,6 +2638,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBoolDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBoolDefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -471,6 +2701,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapBoolTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindBoolTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -478,6 +2715,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapChainBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindChainTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -639,6 +2883,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClearDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClearDepRelationId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -681,6 +2932,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClearSubDep1Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClearSubDep1ClearTopDepTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -702,6 +2960,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClearSubDep2Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClearSubDep2ClearSubDep1TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -723,6 +2988,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClearSubDep3Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClearSubDep3ClearSubDep2TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -744,6 +3016,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClearTopDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClearTopDepTableTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -835,6 +3114,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapClusterBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -856,6 +3142,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDateColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDateColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -863,6 +3156,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDateDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDateDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -877,6 +3177,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDateTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDateTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -884,6 +3191,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash128ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash128ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -891,6 +3205,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash128DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash128DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -905,6 +3226,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash128GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash128GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -954,6 +3282,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash128TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash128TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -961,6 +3296,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash160ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash160ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -968,6 +3310,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash160DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash160DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -982,6 +3331,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash160GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash160GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1031,6 +3387,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash160TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash160TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1038,6 +3401,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash224ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash224ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1045,6 +3415,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash224DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash224DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1059,6 +3436,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash224GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash224GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1108,6 +3492,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash224TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash224TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1115,6 +3506,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash256ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash256ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1122,6 +3520,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash256DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash256DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1136,6 +3541,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash256GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash256GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1185,6 +3597,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash256TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash256TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1192,6 +3611,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash384ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash384ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1199,6 +3625,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash384DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash384DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1213,6 +3646,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash384GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash384GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1262,6 +3702,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash384TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash384TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1269,6 +3716,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash512ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash512ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1276,6 +3730,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash512DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash512DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1290,6 +3751,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash512GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash512GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1339,6 +3807,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDbKeyHash512TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDbKeyHash512TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1346,6 +3821,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDelDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDelDepDefSchemaTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1395,6 +3877,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDelSubDep1Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDelSubDep1DelTopDepTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1416,6 +3905,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDelSubDep2Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDelSubDep2DelSubDep1TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1437,6 +3933,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDelSubDep3Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDelSubDep3DelSubDep2TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1458,6 +3961,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDelTopDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDelTopDepName( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1549,6 +4059,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDoubleColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDoubleColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1556,6 +4073,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDoubleDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDoubleDefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1598,6 +4122,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapDoubleTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindDoubleTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1605,6 +4136,20 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapEnumDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
+	}
+
+	public void bootstrapEnumTagBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindEnumTagTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1752,6 +4297,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapEnumTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindEnumTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1759,6 +4311,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapFloatColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindFloatColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1766,6 +4325,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapFloatDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindFloatDefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1808,6 +4374,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapFloatTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindFloatTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1815,6 +4388,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapHostNodeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindHostNodeClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1843,6 +4423,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOCcyBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOCcyISOCcyId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1885,6 +4472,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOCtryBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOCtryISOCtryId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1906,6 +4500,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOCtryCcyBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOCtryCcyISOCtryId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1920,6 +4521,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOCtryLangBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOCtryLangISOCtryId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1934,6 +4542,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOLangBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOLangISOLangId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -1969,6 +4584,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapISOTZoneBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindISOTZoneISOTZoneId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2018,6 +4640,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapId16GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindId16GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2067,6 +4696,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapId32GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindId32GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2116,6 +4752,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapId64GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindId64GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2165,6 +4808,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapIndexBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindIndexTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2312,6 +4962,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapIndexColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindIndexColTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2515,6 +5172,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapIndexTweakBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindIndexTweakIndexId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2522,6 +5186,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt16ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt16ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2529,6 +5200,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt16DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt16DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2571,6 +5249,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt16TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt16TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2578,6 +5263,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt32ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt32ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2585,6 +5277,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt32DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt32DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2627,6 +5326,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt32TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt32TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2634,6 +5340,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt64ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt64ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2641,6 +5354,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt64DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt64DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2683,6 +5403,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapInt64TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindInt64TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2690,6 +5417,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapLicenseBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindLicenseTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2760,6 +5494,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapMajorVersionBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindMajorVersionTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2802,6 +5543,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapMimeTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindMimeTypeMimeTypeId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2830,6 +5578,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapMinorVersionBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindMinorVersionTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2872,6 +5627,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokenColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokenColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2879,6 +5641,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokenDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokenDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2900,6 +5669,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokenTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokenTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2907,6 +5683,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokensColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokensColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2914,6 +5697,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokensDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokensDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2935,6 +5725,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNmTokensTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNmTokensTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2942,6 +5739,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNumberColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNumberColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -2949,6 +5753,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNumberDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNumberDefDigits( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3005,6 +5816,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapNumberTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindNumberTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3012,6 +5830,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapParamBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindParamTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3208,6 +6033,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapPopDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindPopDepDefSchemaTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3257,6 +6089,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapPopSubDep1Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindPopSubDep1PopTopDepTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3278,6 +6117,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapPopSubDep2Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindPopSubDep2PopSubDep1TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3299,6 +6145,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapPopSubDep3Bindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindPopSubDep3PopSubDep2TenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3320,6 +6173,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapPopTopDepBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindPopTopDepContRelationTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3341,6 +6201,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapRelationBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindRelationTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3565,6 +6432,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapRelationColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindRelationColTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -3768,6 +6642,90 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapRoleDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
+		bind = new CFBamMssCFBindRoleDefTenantId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefScopeId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefDefSchemaTenantId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindHasRoleDefDefSchemaTenantId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefDefSchemaId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindHasRoleDefDefSchemaId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefName( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefMembershipString( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindHasRoleDefDefSchema( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+	}
+
+	public void bootstrapSchemaDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSchemaDefMinorVersionId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6092,6 +9050,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSchemaRefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSchemaRefSchemaId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6225,6 +9190,27 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSchemaRoleBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
+		bind = new CFBamMssCFBindSchemaRoleSchemaDefId( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+	}
+
+	public void bootstrapSchemaTweakBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSchemaTweakSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6232,6 +9218,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapScopeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindScopeTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6246,6 +9239,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecAppBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecAppClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6267,6 +9267,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecDeviceBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecDeviceSecUserId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6295,6 +9302,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecFormBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecFormClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6323,6 +9337,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecGroupBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecGroupClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6351,6 +9372,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecGroupFormBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecGroupFormClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6386,6 +9414,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecGrpIncBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecGrpIncClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6414,6 +9449,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecGrpMembBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecGrpMembClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6442,6 +9484,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecSessionBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecSessionSecSessionId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6505,6 +9554,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSecUserBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSecUserSecUserId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6596,6 +9652,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServerListFuncBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServerListFuncRetTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6631,6 +9694,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServerMethodBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServerMethodTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6785,6 +9855,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServerObjFuncBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServerObjFuncRetTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6820,6 +9897,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServerProcBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServerProcDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6834,6 +9918,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServiceBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServiceClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6883,6 +9974,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapServiceTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindServiceTypeServiceTypeId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6897,6 +9995,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapStringColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindStringColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6904,6 +10009,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapStringDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindStringDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6932,6 +10044,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapStringTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindStringTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6939,6 +10058,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSubProjectBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSubProjectTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6981,6 +10107,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapSysClusterBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindSysClusterSingletonId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -6995,6 +10128,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTSecGroupBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTSecGroupTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7023,6 +10163,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTSecGrpIncBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTSecGrpIncTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7051,6 +10198,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTSecGrpMembBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTSecGrpMembTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7079,6 +10233,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZDateColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZDateColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7086,6 +10247,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZDateDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZDateDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7100,6 +10268,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZDateTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZDateTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7107,6 +10282,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimeColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimeColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7114,6 +10296,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimeDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimeDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7128,6 +10317,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimeTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimeTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7135,6 +10331,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimestampColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimestampColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7142,6 +10345,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimestampDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimestampDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7156,6 +10366,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTZTimestampTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTZTimestampTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -7163,6 +10380,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTableBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTableSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10005,6 +13229,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTableColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTableColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10068,6 +13299,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTableTweakBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTableTweakTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10075,6 +13313,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTenantBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTenantClusterId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10096,6 +13341,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTextColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTextColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10103,6 +13355,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTextDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTextDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10138,6 +13397,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTextTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTextTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10145,6 +13411,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimeColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimeColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10152,6 +13425,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimeDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimeDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10166,6 +13446,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimeTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimeTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10173,6 +13460,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimestampColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimestampColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10180,6 +13474,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimestampDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimestampDefDummy( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10194,6 +13495,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTimestampTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTimestampTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10201,6 +13509,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTldBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTldTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10236,6 +13551,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTokenColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTokenColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10243,6 +13565,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTokenDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTokenDefMaxLen( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10264,6 +13593,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTokenTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTokenTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10271,6 +13607,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTopDomainBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTopDomainTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10313,6 +13656,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTopProjectBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTopProjectTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10355,6 +13705,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapTweakBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindTweakTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10432,6 +13789,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt16ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt16ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10439,6 +13803,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt16DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt16DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10481,6 +13852,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt16TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt16TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10488,6 +13866,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt32ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt32ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10495,6 +13880,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt32DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt32DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10537,6 +13929,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt32TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt32TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10544,6 +13943,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt64ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt64ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10551,6 +13957,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt64DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt64DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10593,6 +14006,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUInt64TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUInt64TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10600,6 +14020,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapURLProtocolBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindURLProtocolURLProtocolId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10628,6 +14055,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuid6ColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuid6ColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10635,6 +14069,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuid6DefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuid6DefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10649,6 +14090,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuid6GenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuid6GenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10698,6 +14146,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuid6TypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuid6TypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10705,6 +14160,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuidColBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuidColTableId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10712,6 +14174,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuidDefBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuidDefInitValue( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10726,6 +14195,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuidGenBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuidGenDispenserTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10775,6 +14251,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapUuidTypeBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindUuidTypeSchemaDefId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -10782,6 +14265,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+	}
+
+	public void bootstrapValueBindings() {
+		ICFGenKbGenBindObj bind = null;
+		ICFGenKbGenBindEditObj editBind = null;
+		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
+		ICFGenKbRuleTypeObj ruleTypeBind = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Bind");
 		bind = new CFBamMssCFBindValueTenantId( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
@@ -11014,1979 +14504,4 @@ public abstract class CFBamMssCFEngine
 		editBind = null;
 
 	}
-
-	public void bootstrapIterators() {
-		ICFGenKbGenIteratorObj iterator = null;
-		ICFGenKbGenIteratorEditObj editIterator = null;
-		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
-		ICFGenKbRuleTypeObj ruleTypeIterator = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Iterator");
-
-		iterator = new CFBamMssCFIterateClearSubDep1ClearDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClearSubDep2ClearDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClearTopDepClearDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClusterHostNode( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClusterTenant( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClusterSecApp( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClusterSecGroup( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateClusterSysCluster( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateDelSubDep1DelDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateDelSubDep2DelDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateDelTopDepDelDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateEnumDefTag( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateHostNodeService( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateISOCcyCtry( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateISOCtryCcy( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateISOCtryLang( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateISOLangCtry( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateIndexColumns( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateIndexTweaks( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateIndexColRefRelFromCol( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateIndexColRefRelToCol( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateMajorVersionMinorVer( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateMinorVersionSchemaDef( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIteratePopSubDep1PopDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIteratePopSubDep2PopDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIteratePopTopDepPopDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateRelationColumns( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateRelationPopDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSchemaDefTables( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSchemaDefTypes( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSchemaDefSchemaRefs( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSchemaDefTweaks( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecAppForm( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecGroupInclude( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecGroupMember( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecGroupIncByGroup( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecGroupForm( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecUserSecDev( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecUserSecSess( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecUserSecProxy( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecUserSecGrpMemb( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSecUserTSecGrpMemb( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateServerMethodParams( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateServiceTypeDeployed( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateSubProjectMajorVer( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTSecGroupInclude( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTSecGroupMember( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTSecGroupIncByGroup( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableRelation( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableIndex( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableColumns( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableReverseRelations( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableChains( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableDelDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableClearDep( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableDispId16Gen( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableDispId32Gen( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableDispId64Gen( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableServerMethods( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTableTweaks( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTenantTSecGroup( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTenantTld( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTenantSchema( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTldTopDomain( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTopDomainLicense( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTopDomainTopProject( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateTopProjectSubProject( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateValueRefTableCol( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-		iterator = new CFBamMssCFIterateValueRefIndexCol( this );
-		editIterator = (ICFGenKbGenIteratorEditObj)iterator.beginEdit();
-		editIterator.setRequiredContainerCartridge( ruleCart );
-		editIterator.setRequiredLookupRuleType( ruleTypeIterator );
-		editIterator.create();
-		editIterator = null;
-
-	}
-
-	public void bootstrapReferences() {
-		ICFGenKbGenReferenceObj refer = null;
-		ICFGenKbGenReferenceEditObj editRefer = null;
-		ICFGenKbRuleCartObj ruleCart = this.getInternalRuleCart();
-		ICFGenKbRuleTypeObj ruleTypeReference = this.getRuleTypeTableObj().readRuleTypeByNameIdx("Reference");
-
-		refer = new CFBamMssCFReferenceBlobColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceBlobTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceBoolColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceBoolTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceChainTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceChainTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceChainDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceChainPrevRel( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceChainNextRel( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearDepRelation( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearDepDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearSubDep1ClearTopDep( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearSubDep2ClearSubDep1( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearSubDep3ClearSubDep2( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearTopDepTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearTopDepPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceClearTopDepNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDateColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDateTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash128ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash128GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash128TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash160ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash160GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash160TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash224ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash224GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash224TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash256ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash256GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash256TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash384ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash384GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash384TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash512ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash512GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDbKeyHash512TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelDepRelation( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelDepDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelSubDep1DelTopDep( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelSubDep2DelSubDep1( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelSubDep3DelSubDep2( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelTopDepTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelTopDepPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDelTopDepNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDoubleColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceDoubleTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTagTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTagEnumDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTagDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTagPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTagNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceEnumTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceFloatColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceFloatTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceHostNodeCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceISOCtryCcyCtry( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceISOCtryCcyCcy( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceISOCtryLangCtry( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceISOCtryLangLang( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceId16GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceId32GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceId64GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexIdxTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexColColumn( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceIndexTweakIndexDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt16ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt16TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt32ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt32TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt64ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceInt64TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceLicenseTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceLicenseTopDomain( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceMajorVersionTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceMajorVersionParentSPrj( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceMinorVersionTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceMinorVersionParentMajVer( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNmTokenColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNmTokenTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNmTokensColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNmTokensTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNumberColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceNumberTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamServerMeth( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceParamType( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopDepRelation( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopDepDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopSubDep1ContPopTopDep( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopSubDep2PopSubDep1( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopSubDep3PopSubDep2( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferencePopTopDepContRelation( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationFromTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationRelTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationFromIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationToTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationToIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationNarrowed( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColRelation( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColFromCol( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceRelationColToCol( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaDefMinorVersion( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaDefCTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaRefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaRefRefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaRefPrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaRefNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSchemaTweakSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceScopeTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecAppCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecDeviceSecUser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecFormCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecFormApplication( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGroupCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGroupFormCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGroupFormGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGroupFormApp( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGroupFormForm( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpIncCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpIncGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpIncSubGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpMembCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpMembGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecGrpMembUser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecSessionSecUser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecSessionSecProxy( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSecUserDefDev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServerListFuncRetTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServerMethodDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServerMethodForTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServerObjFuncRetTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServiceCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServiceHost( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceServiceServiceType( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceStringColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceStringTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSubProjectTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSubProjectParentTPrj( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceSysClusterCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGroupTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpIncTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpIncGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpIncSubGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpMembTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpMembGroup( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTSecGrpMembUser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZDateColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZDateTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZTimeColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZTimeTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZTimestampColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTZTimestampTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableLookupIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableAltIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableQualTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTablePrimaryIndex( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableColDataType( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTableTweakTableDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTenantCluster( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTextColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTextTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTimeColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTimeTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTimestampColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTimestampTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTldTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTokenColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTokenTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTopDomainTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTopDomainParentTld( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTopProjectTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTopProjectParentSDom( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTweakTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTweakScopeDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceTweakDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt16ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt16TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt32ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt32TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt64ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUInt64TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuid6ColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuid6GenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuid6TypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuidColTable( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuidGenDispenser( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceUuidTypeSchemaDef( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceValueTenant( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceValueScope( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceValueDefSchema( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceValuePrev( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-		refer = new CFBamMssCFReferenceValueNext( this );
-		editRefer = (ICFGenKbGenReferenceEditObj)refer.beginEdit();
-		editRefer.setRequiredContainerCartridge( ruleCart );
-		editRefer.setRequiredLookupRuleType( ruleTypeReference );
-		editRefer.create();
-		editRefer = null;
-
-	}}
+}
