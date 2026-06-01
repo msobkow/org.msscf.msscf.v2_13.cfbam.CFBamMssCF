@@ -4593,7 +4593,14 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
-		bind = new CFBamMssCFBindRoleDefMembershipString( this );
+		bind = new CFBamMssCFBindRoleDefEnables( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
+		bind = new CFBamMssCFBindRoleDefIncludes( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
 		editBind.setRequiredLookupRuleType( ruleTypeBind );

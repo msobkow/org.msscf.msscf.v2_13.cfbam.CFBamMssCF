@@ -1,5 +1,5 @@
 
-// Description: Java 11 MssCF Binding for RoleDef Column MembershipString.
+// Description: Java 11 MssCF Binding for RoleDef Column Includes.
 
 /*
  *	org.msscf.msscf.CFBam
@@ -63,27 +63,27 @@ import org.msscf.msscf.v2_13.cfint.CFIntObj.*;
 import org.apache.commons.codec.binary.Base64;
 
 /**
- *	CFBamMssCFBindRoleDefMembershipString binds RoleDef.MembershipString
+ *	CFBamMssCFBindRoleDefIncludes binds RoleDef.Includes
  *	as an instance of MssCFGenBindObj.
  */
-public class CFBamMssCFBindRoleDefMembershipString
+public class CFBamMssCFBindRoleDefIncludes
 	extends MssCFGenBindObj
 {
 	private static final long serialVersionUID = 1L;
 
-	public CFBamMssCFBindRoleDefMembershipString() {
+	public CFBamMssCFBindRoleDefIncludes() {
 		super();
 	}
 
-	public CFBamMssCFBindRoleDefMembershipString( MssCFEngine argEngine ) {
+	public CFBamMssCFBindRoleDefIncludes( MssCFEngine argEngine ) {
 		super( argEngine,
 			"any",
 			null,
 			"RoleDef",
-			"MembershipString" );
+			"Includes" );
 	}
 	public Object getValueObject( MssCFGenContext genContext ) {
-		final String S_ProcName = "CFBamMssCFBindRoleDefMembershipString.getValueObject() ";
+		final String S_ProcName = "CFBamMssCFBindRoleDefIncludes.getValueObject() ";
 
 		if( genContext == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -100,9 +100,9 @@ public class CFBamMssCFBindRoleDefMembershipString
 				"genContext.getGenDef()" );
 		}
 
-		String membershipString;
+		String includes;
 		if( genDef instanceof ICFBamRoleDefObj ) {
-			membershipString = ((ICFBamRoleDefObj)genDef).getRequiredMembershipString();
+			includes = ((ICFBamRoleDefObj)genDef).getRequiredIncludes();
 		}
 		else {
 			throw new CFLibUnsupportedClassException( getClass(),
@@ -112,11 +112,11 @@ public class CFBamMssCFBindRoleDefMembershipString
 				"ICFBamRoleDefObj" );
 		}
 
-		return( membershipString );
+		return( includes );
 	}
 
 	public String expandBody( MssCFGenContext genContext ) {
-		final String S_ProcName = "CFBamMssCFBindRoleDefMembershipString.expandBody() ";
+		final String S_ProcName = "CFBamMssCFBindRoleDefIncludes.expandBody() ";
 
 		if( genContext == null ) {
 			throw new CFLibNullArgumentException( getClass(),
@@ -136,8 +136,8 @@ public class CFBamMssCFBindRoleDefMembershipString
 		String ret;
 
 		if( genDef instanceof ICFBamRoleDefObj ) {
-			String membershipString = ((ICFBamRoleDefObj)genDef).getRequiredMembershipString();
-			ret = membershipString;
+			String includes = ((ICFBamRoleDefObj)genDef).getRequiredIncludes();
+			ret = includes;
 		}
 		else {
 			throw new CFLibUnsupportedClassException( getClass(),
