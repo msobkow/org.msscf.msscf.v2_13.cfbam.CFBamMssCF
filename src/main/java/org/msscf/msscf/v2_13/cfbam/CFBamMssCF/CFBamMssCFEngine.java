@@ -12336,6 +12336,13 @@ public abstract class CFBamMssCFEngine
 		editBind.create();
 		editBind = null;
 
+		bind = new CFBamMssCFBindValueCodeVis( this );
+		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
+		editBind.setRequiredContainerCartridge( ruleCart );
+		editBind.setRequiredLookupRuleType( ruleTypeBind );
+		editBind.create();
+		editBind = null;
+
 		bind = new CFBamMssCFBindHasValueDefSchema( this );
 		editBind = (ICFGenKbGenBindEditObj)bind.beginEdit();
 		editBind.setRequiredContainerCartridge( ruleCart );
